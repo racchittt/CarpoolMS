@@ -1,0 +1,45 @@
+
+{% extends 'authentication/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang "en" dir = "ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                font-family: montserrat;
+                background-image: linear-gradient(150deg,#ffcda5,#ee4d5f);
+                height: 100vh;
+            }
+            .container{
+                padding: 150px;
+            }
+            
+            
+        </style>
+    </head>
+   
+    <body>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        
+        <div class="container">
+        <div class="d-grid gap-xxl-5 col-1 mx-auto">
+            <form action="/Rider/" method='POST'>
+                {% csrf_token %}
+                <button class="btn btn-danger btn-lg p-50" type="submit" >Opt to ride</button>
+            </form>
+            <form action="/Driver/" method='POST'>
+                {% csrf_token %}
+                <button class="btn btn-danger btn-lg p-50" type="submit" >Opt to drive</button>
+            </form>
+          </div>
+        </div>  
+        
+    </body>
+ 
+</html>
+{% endblock content %}

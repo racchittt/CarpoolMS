@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+          #new_button{
+            background-color : transparent;
+            border : 0px;
+          }
+        </style>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">SHARE RIDE</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href='/index'>Home</a>
+                  </li>
+                  {% if user.is_authenticated%}
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href='/drive_or_ride'>Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <form id="signout" method="POST" action='/signout/'>
+                      {% csrf_token %}
+                    <button class="nav-link" id="new_button" type="submit">Signout</button>
+                    </form>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href='/login'>Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href='/signup'>Register</a>
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </nav>
+          {% block content %}
+          {% endblock content %}
+    </head>
+</html>
